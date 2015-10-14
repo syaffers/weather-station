@@ -39,7 +39,7 @@ $app->get('/temp.json', function () use ($app) {
 	$stmt = $db->prepare($sql);
 	$stmt->execute();
 	$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-	foreach ($stmt as $row) {
+	foreach ($results as $row) {
 	 	$row['id'] = intval($row['id']);
 	 	$row['temperature'] = floatval($row['temperature']);
 	 	array_push($readings, $row);
