@@ -80,7 +80,8 @@ $app->get('/lux.json', function () use ($app) {
 	$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($results as $row) {
 	 	$row['id'] = intval($row['id']);
-	 	$row['luminance'] = floatval($row['humidity']);
+		if (!is_null($row['illuminance']))
+	 		$row['illuminance'] = floatval($row['illuminance']);
 	 	array_push($readings, $row);
 	}
 

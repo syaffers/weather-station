@@ -23,6 +23,8 @@ function drawChartAll() {
     var options = {
       // title: 'Stuff',
       // curveType: 'function'
+      colors: ['#DC3912', '#3366CC', '#FF9900'],
+      legend: 'bottom'
     };
 
     var chart = new google.visualization.LineChart(document.getElementById('draw-all'))
@@ -50,7 +52,10 @@ function drawChartTemp() {
 
     var options = {
       // title: 'Stuff',
-      curveType: 'function'
+      // curveType: 'function',
+      colors: ['#DC3912'],
+      legend: 'bottom',
+      vAxis: { format: '#°C' }
     };
 
     var chart = new google.visualization.LineChart(document.getElementById('draw-tem'))
@@ -78,7 +83,10 @@ function drawChartHum() {
 
     var options = {
       // title: 'Stuff',
-      curveType: 'function'
+      legend: 'bottom',
+      colors: ['#3366CC'],
+      curveType: 'function',
+      vAxis: { format: '#\'%\'' }
     };
 
     var chart = new google.visualization.LineChart(document.getElementById('draw-hum'))
@@ -88,7 +96,7 @@ function drawChartHum() {
 
 function drawChartLum() {
   $.ajax({
-    url: "hum.json",
+    url: "lux.json",
     dataType: 'json'
   })
   .done(function (results) {
@@ -106,7 +114,10 @@ function drawChartLum() {
 
     var options = {
       // title: 'Stuff',
-      curveType: 'function'
+      legend: 'bottom',
+      colors: ['#FF9900'],
+      curveType: 'function',
+      vAxis: { format: '# lum' }
     };
 
     var chart = new google.visualization.LineChart(document.getElementById('draw-lux'))
@@ -115,6 +126,6 @@ function drawChartLum() {
 }
 
 google.setOnLoadCallback(drawChartTemp);
-google.setOnLoadCallback(drawChartTemp);
+google.setOnLoadCallback(drawChartLum);
 google.setOnLoadCallback(drawChartHum);
 google.setOnLoadCallback(drawChartAll);
