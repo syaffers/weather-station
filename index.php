@@ -14,21 +14,25 @@ $app->get('/data.json', function () use ($app) {
 	$rows = $db->query($sql);
 
 	$readings = array();
-	foreach ($db->query($sql) as $row) {
-		unset($row[0]);
-		unset($row[1]);
-		unset($row[2]);
-		unset($row[3]);
+	$stmt = $db->prepare($sql)
+	$stmt->execute();
+	// foreach ($stmt as $row) {
+	// 	unset($row[0]);
+	// 	unset($row[1]);
+	// 	unset($row[2]);
+	// 	unset($row[3]);
+	// 	unset($row[4]);
+	//
+	// 	$row['id'] = intval($row['id']);
+	// 	$row['temperature'] = floatval($row['temperature']);
+	// 	$row['humidity'] = floatval($row['humidity']);
+	// 	array_push($readings, $row);
+	// }
+	print_r($stmt);
 
-		$row['id'] = intval($row['id']);
-		$row['temperature'] = floatval($row['temperature']);
-		$row['humidity'] = floatval($row['humidity']);
-		array_push($readings, $row);
-	}
 	$app->response->headers->set('Content-Type', 'application/json');
 	echo(json_encode($readings));
 });
 
 
 $app->run();
-
