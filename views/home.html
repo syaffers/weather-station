@@ -17,72 +17,7 @@
             }]
           }">
   </script>
-  <script type="text/javascript">
-
-    function drawChartAll() {
-      $.ajax({
-        url: "all.json",
-        dataType: 'json'
-      })
-      .done(function (results) {
-        var data = new google.visualization.DataTable()
-
-        data.addColumn('datetime', 'Time');
-        data.addColumn('number', 'Temperature');
-        data.addColumn('number', 'Humidity');
-        data.addColumn('number', 'Illuminance');
-
-        $.each(results, function (index, row) {
-          data.addRow([
-            (new Date(row.created_on)),
-            parseFloat(row.temperature),
-            parseFloat(row.humidity),
-            parseFloat(row.illuminance)
-          ]);
-        });
-
-        var options = {
-          // title: 'Stuff',
-          // curveType: 'function'
-        };
-
-        var chart = new google.visualization.LineChart(document.getElementById('draw-all'))
-        chart.draw(data, options);
-      });
-    }
-
-    function drawChartTemp() {
-      $.ajax({
-        url: "temp.json",
-        dataType: 'json'
-      })
-      .done(function (results) {
-        var data = new google.visualization.DataTable()
-
-        data.addColumn('datetime', 'Time');
-        data.addColumn('number', 'Temperature');
-
-        $.each(results, function (index, row) {
-          data.addRow([
-            (new Date(row.created_on)),
-            parseFloat(row.temperature)
-          ]);
-        });
-
-        var options = {
-          // title: 'Stuff',
-          curveType: 'function'
-        };
-
-        var chart = new google.visualization.LineChart(document.getElementById('draw-tem'))
-        chart.draw(data, options);
-      });
-    }
-
-    google.setOnLoadCallback(drawChartTemp);
-    google.setOnLoadCallback(drawChartAll);
-
-  </script>
+  <script type="text/javascript" src="js/drawCharts.js"></script>
 </head>
 <body>
   <div class="container">
@@ -108,7 +43,7 @@
       </div>
       <div class="col-xs-6">
         <h3>Illuminance</h3>
-        <div id="draw-ill"></div>
+        <div id="draw-lux"></div>
       </div>
     </div>
   </div>

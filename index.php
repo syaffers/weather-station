@@ -16,6 +16,7 @@ $app->get('/all.json', function () use ($app) {
 	$readings = array();
 	$stmt = $db->prepare($sql);
 	$stmt->execute();
+	$results = $statement->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($stmt as $row) {
 	 	$row['id'] = intval($row['id']);
 	 	$row['temperature'] = floatval($row['temperature']);
@@ -37,6 +38,7 @@ $app->get('/temp.json', function () use ($app) {
 	$readings = array();
 	$stmt = $db->prepare($sql);
 	$stmt->execute();
+	$results = $statement->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($stmt as $row) {
 	 	$row['id'] = intval($row['id']);
 	 	$row['temperature'] = floatval($row['temperature']);
@@ -55,6 +57,7 @@ $app->get('/hum.json', function () use ($app) {
 	$readings = array();
 	$stmt = $db->prepare($sql);
 	$stmt->execute();
+	$results = $statement->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($stmt as $row) {
 
 	 	$row['id'] = intval($row['id']);
@@ -74,6 +77,7 @@ $app->get('/lux.json', function () use ($app) {
 	$readings = array();
 	$stmt = $db->prepare($sql);
 	$stmt->execute();
+	$results = $statement->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($stmt as $row) {
 	 	$row['id'] = intval($row['id']);
 	 	$row['luminance'] = floatval($row['humidity']);
