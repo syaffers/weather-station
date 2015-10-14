@@ -17,16 +17,11 @@ $app->get('/all.json', function () use ($app) {
 	$stmt = $db->prepare($sql);
 	$stmt->execute();
 	foreach ($stmt as $row) {
-	 	unset($row[0]);
-	 	unset($row[1]);
-	 	unset($row[2]);
-	 	unset($row[3]);
-	 	unset($row[4]);
-
 	 	$row['id'] = intval($row['id']);
 	 	$row['temperature'] = floatval($row['temperature']);
 	 	$row['humidity'] = floatval($row['humidity']);
-	 	$row['illuminanace'] = floatval($row['humidity']);
+		if (!is_null($row['illuminance']))
+	 		$row['illuminance'] = floatval($row['illuminance']);
 	 	array_push($readings, $row);
 	}
 
@@ -43,7 +38,6 @@ $app->get('/temp.json', function () use ($app) {
 	$stmt = $db->prepare($sql);
 	$stmt->execute();
 	foreach ($stmt as $row) {
-
 	 	$row['id'] = intval($row['id']);
 	 	$row['temperature'] = floatval($row['temperature']);
 	 	array_push($readings, $row);
@@ -81,7 +75,6 @@ $app->get('/lux.json', function () use ($app) {
 	$stmt = $db->prepare($sql);
 	$stmt->execute();
 	foreach ($stmt as $row) {
-
 	 	$row['id'] = intval($row['id']);
 	 	$row['luminance'] = floatval($row['humidity']);
 	 	array_push($readings, $row);
