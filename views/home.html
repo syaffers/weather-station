@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+  <!--Load the AJAX API-->
+  <script type="text/javascript"
+          src="https://www.google.com/jsapi?autoload={
+            'modules':[{
+              'name':'visualization',
+              'version':'1',
+              'packages':['corechart']
+            }]
+          }">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+
+    function drawChart() {
+      $.ajax({
+        url: "data.json",
+        dataType: 'json'
+      })
+      .done(function (results) {
+        var data = new google.visualization.DataTable()
+
+        data.addColumn('datetime', 'Time');
+        data.addColumn('number', 'Temperature');
+        data.addColumn('number', 'Humidity');
+
+        $.each(results, function (index, row) {
+          data.addRow([
+            (new Date(row.created_on)),
+            parseFloat(row.temperature),
+            parseFloat(row.humidity)
+          ]);
+        });
+
+        var options = {
+          // title: 'Stuff',
+          // curveType: 'function'
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('draw'))
+        chart.draw(data, options);
+      });
+    }
+
+    google.setOnLoadCallback(drawChart);
+
+  </script>
+</head>
+<body style="font-family:Arial,sans-serif;">
+  <h1>Syafiq's RasPi Weather Station</h1>
+  <div id="draw" style="width: 1200px; height: 600px; margin:0 auto;"></div>
+</body>
+</html>
