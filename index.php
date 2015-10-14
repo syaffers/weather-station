@@ -9,7 +9,7 @@ $app->get('/', function () use ($app) {
 });
 
 $app->get('/all.json', function () use ($app) {
-	$db = new PDO("mysql:host=127.0.0.1;dbname=wstation", "root", "TONYHAWK");
+	$db = new PDO("mysql:host=127.0.0.1;dbname=wstation", "syaffers", "pizza");
 	$sql = "SELECT * FROM readings";
 	$rows = $db->query($sql);
 
@@ -30,8 +30,8 @@ $app->get('/all.json', function () use ($app) {
 });
 
 $app->get('/temp.json', function () use ($app) {
-	$db = new PDO("mysql:host=127.0.0.1;dbname=wstation", "root", "TONYHAWK");
-	$sql = "SELECT created_on,temperature FROM readings";
+	$db = new PDO("mysql:host=127.0.0.1;dbname=wstation", "syaffers", "pizza");
+	$sql = "SELECT id,created_on,temperature FROM readings";
 	$rows = $db->query($sql);
 
 	$readings = array();
@@ -48,8 +48,8 @@ $app->get('/temp.json', function () use ($app) {
 });
 
 $app->get('/hum.json', function () use ($app) {
-	$db = new PDO("mysql:host=127.0.0.1;dbname=wstation", "root", "TONYHAWK");
-	$sql = "SELECT created_on,humidity FROM readings";
+	$db = new PDO("mysql:host=127.0.0.1;dbname=wstation", "syaffers", "pizza");
+	$sql = "SELECT id,created_on,humidity FROM readings";
 	$rows = $db->query($sql);
 
 	$readings = array();
@@ -67,8 +67,8 @@ $app->get('/hum.json', function () use ($app) {
 });
 
 $app->get('/lux.json', function () use ($app) {
-	$db = new PDO("mysql:host=127.0.0.1;dbname=wstation", "root", "TONYHAWK");
-	$sql = "SELECT created_on,illuminance FROM readings";
+	$db = new PDO("mysql:host=127.0.0.1;dbname=wstation", "syaffers", "pizza");
+	$sql = "SELECT id,created_on,illuminance FROM readings";
 	$rows = $db->query($sql);
 
 	$readings = array();
