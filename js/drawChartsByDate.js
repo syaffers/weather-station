@@ -34,6 +34,7 @@ function drawChartAll() {
 }
 
 function drawChartTemp() {
+  var url = window.location.href.split('/')
   $.ajax({
     url: "../temp/" + url[url.length - 2] + "/" +  url[url.length - 1],
     dataType: 'json'
@@ -65,6 +66,7 @@ function drawChartTemp() {
 }
 
 function drawChartHum() {
+  var url = window.location.href.split('/')
   $.ajax({
     url: "../hum/" + url[url.length - 2] + "/" +  url[url.length - 1],
     dataType: 'json'
@@ -95,6 +97,7 @@ function drawChartHum() {
 }
 
 function drawChartLum() {
+  var url = window.location.href.split('/')
   $.ajax({
     url: "../lux/" + url[url.length - 2] + "/" +  url[url.length - 1],
     dataType: 'json'
