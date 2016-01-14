@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<head lang="en">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" media="screen" charset="utf-8">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js" type="text/javascript"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <!--Load the AJAX API-->
+  <script type="text/javascript"
+          src="https://www.google.com/jsapi?autoload={
+            'modules':[{
+              'name':'visualization',
+              'version':'1',
+              'packages':['corechart']
+            }]
+          }">
+  </script>
+  <script type="text/javascript" src="../js/drawChartsByDate.js"></script>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>Syafiq's RasPi Weather Station</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6">
+        <h3>All Data</h3>
+        <div id="draw-all"></div>
+      </div>
+      <div class="col-xs-6">
+        <h3>Temperature</h3>
+        <div id="draw-tem"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6">
+        <h3>Humidity</h3>
+        <div id="draw-hum"></div>
+      </div>
+      <div class="col-xs-6">
+        <h3>Illuminance</h3>
+        <div id="draw-lux"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

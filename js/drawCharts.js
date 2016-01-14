@@ -85,7 +85,6 @@ function drawChartHum() {
       // title: 'Stuff',
       legend: 'bottom',
       colors: ['#3366CC'],
-      curveType: 'function',
       vAxis: { format: '#\'%\'' }
     };
 
@@ -116,7 +115,7 @@ function drawChartLum() {
       // title: 'Stuff',
       legend: 'bottom',
       colors: ['#FF9900'],
-      curveType: 'function',
+      // curveType: 'function',
       vAxis: { format: '# lum' }
     };
 
